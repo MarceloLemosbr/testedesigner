@@ -140,3 +140,42 @@ body {
   background: #222;
   border-radius: 0; /* Garantir quadrado mesmo no hover */
 }
+
+/*Swiper na versão mobile*/
+
+@media (max-width: 768px) {
+  .swiper .swiper-slide {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+  }
+
+  .swiper .card {
+    width: 70%;
+    max-width: 75%;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 25px !important;
+    height: 25px !important;
+    background-size: 25px 25px !important;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 25px !important;
+  }
+
+  .swiper-pagination {
+    position: relative !important;
+    margin-top: 10px !important;
+    bottom: auto !important; /* remove o posicionamento forçado */
+  }
+
+  .card:hover {
+    transform: scale(1);
+  }
+}
