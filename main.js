@@ -27,6 +27,8 @@ $(document).ready(function () {
     let valor = parseFloat(rawText.replace(/[^\d,]/g, "").replace(",", "."));
     if (!isNaN(valor) && valor < 1000000) {
       $(card).addClass("destaque");
+      $(card).find(".badge").text("OPORTUNIDADE");
+      $(card).find(".badge").addClass("opportunity");
     }
   });
 });
