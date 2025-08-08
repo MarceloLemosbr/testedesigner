@@ -7,7 +7,7 @@ body {
 
 .cards-container {
   display: flex;
-  gap: 32px;
+  gap: 2.5rem;
   justify-content: center;
 }
 
@@ -15,11 +15,19 @@ body {
   background: #fff;
   width: 340px;
   border: 2px solid #ececec;
-  border-radius: 0; /* Quadrado */
-  box-shadow: 0 4px 16px rgba(30,30,30,0.09);
+  border-radius: 1rem;
+  box-shadow: 0 4px 16px rgba(30, 30, 30, 0.09);
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  opacity: 0; /* inicialmente invisível */
+  transform: translateX(-30px); /* deslocado para a esquerda */
+  transition: opacity 0.6s ease, transform 0.6s ease; /* efeito suave */
+}
+
+.card.show {
+  opacity: 1;
+  transform: translateX(0); /* posição final */
 }
 
 .card-img {
@@ -38,11 +46,22 @@ body {
   object-fit: cover;
 }
 
+.card.destaque {
+  border: 2px solid #275fae;
+  background: linear-gradient(135deg, #e8f5f8, #ffffff);
+  box-shadow: 0 8px 18px rgba(0, 153, 255, 0.5);
+}
+
+/* Efeito ao passar o mouse */
+.card:hover {
+  transform: scale(1.1);
+}
+
 .badge {
   position: absolute;
   top: 12px;
   left: 12px;
-  background: #E74C3C;
+  background: #e74c3c;
   color: #fff;
   padding: 5px 16px;
   font-size: 14px;
@@ -55,7 +74,7 @@ body {
   position: absolute;
   top: 16px;
   right: 16px;
-  background: rgba(0,0,0,0.27);
+  background: rgba(0, 0, 0, 0.27);
   color: #fff;
   font-weight: bold;
   font-size: 22px;
@@ -69,9 +88,9 @@ body {
   position: absolute;
   bottom: 10px;
   left: 14px;
-  color: #E74C3C;
+  color: #e74c3c;
   font-size: 13px;
-  background: rgba(255,255,255,0.86);
+  background: rgba(255, 255, 255, 0.86);
   padding: 2px 7px;
   border-radius: 0; /* Quadrado */
 }
@@ -120,4 +139,43 @@ body {
 .details-btn:hover {
   background: #222;
   border-radius: 0; /* Garantir quadrado mesmo no hover */
+}
+
+/*Swiper na versão mobile*/
+
+@media (max-width: 768px) {
+  .swiper .swiper-slide {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+  }
+
+  .swiper .card {
+    width: 70%;
+    max-width: 75%;
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 25px !important;
+    height: 25px !important;
+    background-size: 25px 25px !important;
+  }
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 25px !important;
+  }
+
+  .swiper-pagination {
+    position: relative !important;
+    margin-top: 10px !important;
+    bottom: auto !important; /* remove o posicionamento forçado */
+  }
+
+  .card:hover {
+    transform: scale(1);
+  }
 }
